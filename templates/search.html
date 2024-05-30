@@ -1,0 +1,237 @@
+<!-- search_results.html -->
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Travelo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS here -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .search-form {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9ff;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-form input,
+        .search-form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .search-form button {
+            background: #ff5a5f;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-form button:hover {
+            background: #ff3b3f;
+        }
+
+        .search-results {
+            margin-top: 30px;
+        }
+
+        .result-item {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+        }
+
+        .result-item img {
+            max-width: 300px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .result-details {
+            flex: 1;
+        }
+
+        .result-details h4 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .result-details .price {
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #ff5a5f;
+        }
+
+        .result-details p {
+            margin-bottom: 10px;
+        }
+
+        .result-details .btn {
+            background: #ff5a5f;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .result-details .btn:hover {
+            background: #ff3b3f;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid">
+                    <div class="header_bottom_border">
+                        <div class="row align-items-center">
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <a href="index.html">
+                                        <img src="{% static 'img/logo.png' %}" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="main-menu d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a class="active" href="../../">home</a></li>
+
+                                            {% if user.is_authenticated %}
+                                            <li>Hello, {{user.first_name}} </li>
+                                            <li><a href="../logout">Logout</a></li>
+                                            {% else %}
+                                            
+                                            <li><a href="../register">Register</a></li>
+                                            <li><a href="login">Login</a></li>
+                                            {% endif %}
+                                            <li><a class="" href="../about">About</a></l/li>
+                                           
+                                            
+                                            <li><a href="../contact">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 d-none d-lg-block">
+                                <div class="social_wrap d-flex align-items-center justify-content-end">
+                                    <div class="number">
+                                        <p> <i class="fa fa-phone"></i> +91 82976 34009</p>
+                                    </div>
+                                    <div class="social_links d-none d-xl-block">
+                                        <ul>
+                                            <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
+                                            <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
+                                            <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
+                                            <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="seach_icon">
+                                <a  href="../search">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-end -->
+
+    <div class="container mt-5">
+        <div class="search-form">
+            <form method="get" action="{% url 'search' %}">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <input type="text" name="destination" placeholder="Destination">
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <input type="date" name="checkin" placeholder="Check-in">
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <input type="date" name="checkout" placeholder="Check-out">
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <input type="number" name="guests" placeholder="Guests" min="1">
+                    </div>
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn-search">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="search-results">
+            {% if results %}
+                {% for result in results %}
+                    <div class="result-item">
+                        <img src="{{ result.img.url }}" alt="{{ result.name }}">
+                        <div class="result-details">
+                            <h4>{{ result.name }}</h4>
+                            <p class="price">${{ result.price }}</p>
+                            <p>{{ result.description }}</p>
+                            <a href="#" class="btn">View More</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No destinations found. Please enter a search query.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- JS here -->
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/ajax-form.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+</body>
+</html>
+
+  
